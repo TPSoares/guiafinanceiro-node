@@ -1,26 +1,24 @@
 import { UserGatewayInterface } from './interfaces/userGatewayInterface';
 import { UserEntity } from './entities/user.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UserGateway implements UserGatewayInterface {
   constructor(
-    @InjectRepository(UserEntity)
-    private usersRepository: Repository<UserEntity>,
+    private usersRepository: UserRepository,
   ) {}
 
   findAll(): Promise<UserEntity[]> {
-    return this.usersRepository.find();
+    return this.usersRepository.findAll();
   }
 
   findOne(id: number): Promise<UserEntity | null> {
-    return this.usersRepository.findOneBy({ id });
+    return this.usersRepository.findOne(id);
   }
 
   async remove(id: number): Promise<void> {
-    await this.usersRepository.delete(id);
+    await this.usersRepository.remove(id);
   }
 
 }

@@ -8,6 +8,9 @@ export class UserEntity {
   @Column({name: "name"})
   name: string;
 
+  @Column({name: "password"})
+  password: string;
+
   @Column({name: "email"})
   email: string;
 
