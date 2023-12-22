@@ -1,18 +1,15 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({name: "t_user"})
-export class UserEntity {
-  @PrimaryGeneratedColumn({name: "user_id"})
-  userId: number;
+@Entity({name: "t_transaction_type"})
+export class TransactionTypeEntity {
+  @PrimaryGeneratedColumn({name: "transaction_type_id"})
+  transactionTypeId: number;
 
   @Column({name: "name"})
   name: string;
 
-  @Column({name: "password"})
-  password: string;
-
-  @Column({name: "email"})
-  email: string;
+  @Column({name: "description"})
+  description: string;
 
   @Column({name: "created_at"})
   createdAt: Date;
